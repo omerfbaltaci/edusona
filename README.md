@@ -1,5 +1,3 @@
----
-
 # EduSona – AI-Powered Personal Learning Assistant
 
 EduSona, öğrenme deneyimini kişiselleştiren, yapay zeka destekli bir eğitim asistanıdır. Kullanıcının tercihlerini ve öğrenme tarzını anlayarak, içerikleri bireysel ihtiyaçlara göre uyarlayan bu uygulama, öğrenmeyi daha etkili ve verimli hale getirir.
