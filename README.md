@@ -1,33 +1,82 @@
-Hello.
+---
 
-Meet EduSona – your personalized, AI-powered learning assistant.
+# EduSona – AI-Powered Personal Learning Assistant
 
-EduSona isn’t just another search tool. It understands how you want to learn.
+EduSona, öğrenme deneyimini kişiselleştiren, yapay zeka destekli bir eğitim asistanıdır. Kullanıcının tercihlerini ve öğrenme tarzını anlayarak, içerikleri bireysel ihtiyaçlara göre uyarlayan bu uygulama, öğrenmeyi daha etkili ve verimli hale getirir.
 
-When you launch the app, it asks you a few quick questions —
+## 🚀 Özellikler
 
-Do you prefer step-by-step explanations, or just the key takeaways?
+* **Kişiselleştirilmiş Öğrenme:** Kullanıcının tercih ettiği anlatım tarzı, görsel kullanımı, öğrenme süresi ve örnek ihtiyacına göre içerik sunar.
+* **Minimalist Arayüz:** Apple ve iOS tasarımından ilham alan sade ve odaklanmayı kolaylaştıran bir kullanıcı arayüzü.
+* **Yapay Zeka Entegrasyonu:** Google Gemini veya benzeri büyük dil modelleriyle entegre çalışarak, kullanıcıya özel içerikler üretir.
+* **Hızlı ve Etkili:** React + Vite ile geliştirilmiş, hızlı ve duyarlı bir uygulama deneyimi sunar.
 
-Do you want visuals, examples, or just clean, focused content?
+## 🧠 Uygulama Akışı
 
-Got 5 minutes? Or maybe 25?
+1. **Hoş Geldiniz Ekranı:** Kullanıcıyı karşılayan sade bir giriş ekranı.
+2. **Kişisel Tercih Soruları:** Kullanıcının öğrenme tercihlerini belirlemek için 4-5 soruluk bir anket.
+3. **Konu Seçimi:** Kullanıcının öğrenmek istediği konunun serbest metin olarak alınması.
+4. **İçerik Oluşturma:** Toplanan bilgilerle kişiselleştirilmiş bir prompt oluşturularak yapay zeka API'sine gönderilir.
+5. **Sonuç Sunumu:** Yapay zekadan gelen yanıt, kullanıcıya sade ve okunabilir bir formatta sunulur.
 
-Based on your answers, EduSona creates a custom explanation tailored to you.
+## 🛠 Teknolojiler
 
-Whatever the topic — calculus, neural networks, or philosophy —
-EduSona rewrites the content to match your unique learning style.
+* **Frontend:** React + Vite
+* **Stil:** Tailwind CSS
+* **Yapay Zeka:** Google Gemini API (veya alternatif büyük dil modelleri)
 
-The interface is inspired by Apple, ChatGPT, and iOS design:
-minimal, elegant, distraction-free.
+## 📦 Kurulum ve Çalıştırma
 
-Every interaction is smooth. Every animation is subtle.
+1. Bu depoyu klonlayın:
 
-EduSona doesn’t just teach — it helps you understand.
+   ```bash
+   git clone https://github.com/omerfbaltaci/edusona.git
+   cd edusona
+   ```
 
-This is more than AI.
 
-This is your personal learning partner.
 
-Say hello to EduSona.
+2. Gerekli bağımlılıkları yükleyin:
 
-Learning just got personal.
+   ```bash
+   npm install
+   ```
+
+
+
+3. Geliştirme sunucusunu başlatın:
+
+   ```bash
+   npm run dev
+   ```
+
+
+
+4. Uygulamayı tarayıcınızda görüntüleyin:
+
+   ```
+   http://localhost:5173
+   ```
+
+
+
+## 🔐 Ortam Değişkenleri
+
+Yapay zeka API'sine erişim için bir API anahtarına ihtiyacınız vardır. Proje kök dizininde `.env` dosyası oluşturarak aşağıdaki değişkeni ekleyin:
+
+```
+
+VITE_GEMINI_API_KEY=your_api_key_here
+```
+
+
+
+## 📄 Lisans
+
+Bu proje [Apache 2.0 Lisansı](LICENSE) ile lisanslanmıştır.
+
+## 🤝 Katkıda Bulunun
+
+Katkılarınızı memnuniyetle karşılıyoruz! Lütfen katkıda bulunmadan önce `CONTRIBUTING.md` dosyasını inceleyin.
+
+---
