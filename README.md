@@ -66,15 +66,3 @@ Yapay zeka API'sine erişim için bir API anahtarına ihtiyacınız vardır. Pro
 
 VITE_GEMINI_API_KEY=your_api_key_here
 ```
-
-
-
-## 📄 Lisans
-
-Bu proje [Apache 2.0 Lisansı](LICENSE) ile lisanslanmıştır.
-
-## 🤝 Katkıda Bulunun
-
-Katkılarınızı memnuniyetle karşılıyoruz! Lütfen katkıda bulunmadan önce `CONTRIBUTING.md` dosyasını inceleyin.
-
----
