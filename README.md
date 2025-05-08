@@ -1,15 +1,15 @@
-# EduSona – AI-Powered Personal Learning Assistant
+# EduSona – Yapay Zeka Destekli Eğitim Asistanı
 
 EduSona, öğrenme deneyimini kişiselleştiren, yapay zeka destekli bir eğitim asistanıdır. Kullanıcının tercihlerini ve öğrenme tarzını anlayarak, içerikleri bireysel ihtiyaçlara göre uyarlayan bu uygulama, öğrenmeyi daha etkili ve verimli hale getirir.
 
-## 🚀 Özellikler
+## Özellikler
 
 * **Kişiselleştirilmiş Öğrenme:** Kullanıcının tercih ettiği anlatım tarzı, görsel kullanımı, öğrenme süresi ve örnek ihtiyacına göre içerik sunar.
 * **Minimalist Arayüz:** Apple ve iOS tasarımından ilham alan sade ve odaklanmayı kolaylaştıran bir kullanıcı arayüzü.
 * **Yapay Zeka Entegrasyonu:** Google Gemini veya benzeri büyük dil modelleriyle entegre çalışarak, kullanıcıya özel içerikler üretir.
 * **Hızlı ve Etkili:** React + Vite ile geliştirilmiş, hızlı ve duyarlı bir uygulama deneyimi sunar.
 
-## 🧠 Uygulama Akışı
+## Uygulama Akışı
 
 1. **Hoş Geldiniz Ekranı:** Kullanıcıyı karşılayan sade bir giriş ekranı.
 2. **Kişisel Tercih Soruları:** Kullanıcının öğrenme tercihlerini belirlemek için 4-5 soruluk bir anket.
@@ -17,13 +17,13 @@ EduSona, öğrenme deneyimini kişiselleştiren, yapay zeka destekli bir eğitim
 4. **İçerik Oluşturma:** Toplanan bilgilerle kişiselleştirilmiş bir prompt oluşturularak yapay zeka API'sine gönderilir.
 5. **Sonuç Sunumu:** Yapay zekadan gelen yanıt, kullanıcıya sade ve okunabilir bir formatta sunulur.
 
-## 🛠 Teknolojiler
+## Teknolojiler
 
 * **Frontend:** React + Vite
 * **Stil:** Tailwind CSS
 * **Yapay Zeka:** Google Gemini API (veya alternatif büyük dil modelleri)
 
-## 📦 Kurulum ve Çalıştırma
+## Kurulum ve Çalıştırma
 
 1. Bu depoyu klonlayın:
 
@@ -58,7 +58,7 @@ EduSona, öğrenme deneyimini kişiselleştiren, yapay zeka destekli bir eğitim
 
 
 
-## 🔐 Ortam Değişkenleri
+## Ortam Değişkenleri
 
 Yapay zeka API'sine erişim için bir API anahtarına ihtiyacınız vardır. Proje kök dizininde `.env` dosyası oluşturarak aşağıdaki değişkeni ekleyin:
 
