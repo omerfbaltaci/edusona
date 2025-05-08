@@ -5,7 +5,7 @@ EduSona, öğrenme deneyimini kişiselleştiren, yapay zeka destekli bir eğitim
 ## Özellikler
 
 * **Kişiselleştirilmiş Öğrenme:** Kullanıcının tercih ettiği anlatım tarzı, görsel kullanımı, öğrenme süresi ve örnek ihtiyacına göre içerik sunar.
-* **Minimalist Arayüz:** Apple ve iOS tasarımından ilham alan sade ve odaklanmayı kolaylaştıran bir kullanıcı arayüzü.
+* **Minimalist Arayüz:** Minimal tasarımlardan ilham alan sade ve odaklanmayı kolaylaştıran bir kullanıcı arayüzü.
 * **Yapay Zeka Entegrasyonu:** Google Gemini veya benzeri büyük dil modelleriyle entegre çalışarak, kullanıcıya özel içerikler üretir.
 * **Hızlı ve Etkili:** React + Vite ile geliştirilmiş, hızlı ve duyarlı bir uygulama deneyimi sunar.
 
