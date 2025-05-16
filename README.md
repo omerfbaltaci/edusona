@@ -65,6 +65,5 @@ EduSona, öğrenme deneyimini kişiselleştiren, yapay zeka destekli bir eğitim
 Yapay zeka API'sine erişim için bir API anahtarına ihtiyacınız vardır. Proje kök dizininde `.env` dosyası oluşturarak aşağıdaki değişkeni ekleyin:
 
 ```
-
 VITE_GEMINI_API_KEY=your_api_key_here
 ```
