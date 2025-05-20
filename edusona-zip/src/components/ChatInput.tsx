@@ -35,7 +35,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, disabled = false }
         <textarea
           ref={textareaRef}
           className="w-full px-4 py-3 pr-12 bg-white/5 border border-white/20 rounded-xl text-white resize-none focus:outline-none focus:border-white/40 transition-all min-h-[52px] max-h-32"
-          placeholder={disabled ? "Please wait..." : "Ask a follow-up question..."}
+          placeholder={disabled ? "Lütfen bekleyin..." : "Bir soru sorun veya konuşmayı devam ettirin..."}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           onKeyDown={(e) => {

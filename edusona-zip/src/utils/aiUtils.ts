@@ -1,7 +1,7 @@
 // aiUtils.ts
 
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { UserPreferences } from '../types'; // types.ts dosyanızın doğru yolda olduğundan emin olun
+import { UserPreferences, Message } from '../types'; // types.ts dosyanızın doğru yolda olduğundan emin olun
 
 // API anahtarını ortam değişkeninden al
 const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
@@ -70,13 +70,18 @@ function getExamplesDescription(examples: UserPreferences['examplesPreference'])
 
 export const generateResponse = async (
   userPrompt: string, // Kullanıcının o anki sorusu veya talebi
-  preferences: UserPreferences
+  preferences: UserPreferences,
+  previousMessages: Message[] = [] // Önceki mesajları da alacak şekilde güncellenmiş
 ): Promise<string> => {
   try {
     const model = genAIInstance.getGenerativeModel({ model: 'gemini-2.0-flash' });
 
     // --- Sistem Talimatı (System Instruction) ---
-    const systemInstruction = `
+    // Sistem talimatını doğrudan API çağrısına eklemek yerine, konuşma geçmişinin
+    // ilk kullanıcı mesajına ekleyerek veya chat geçmişine rol ile ekleyerek yönetelim.
+    // GoogleGenerativeAI kütüphanesinde en iyi pratik, sistemi ilk kullanıcı
+    // mesajıyla veya history içinde 'user' rolüyle göndermektir.
+    const systemInstructionText = `
 Sen eğitim alanında uzmanlaşmış bir yapay zeka asistanısın.
 İsmin EduSona ve görevin, aşağıda belirtilen öğrenme tercihlerine ve formatlama kurallarına uyarak kullanıcıya "${preferences.topic}" konusu hakkında yardımcı olmaktır.
 Her zaman Türkçe yanıt ver. Cevaplarını düzgün paragraflar halinde yapılandır.
@@ -125,24 +130,40 @@ Tablo Oluşturma Kuralları (Eğer tablo kullanacaksan BU KURALLARA KESİNLİKLE
 --- SİSTEM TALİMATI SONU ---
 `;
 
-    // Sistem talimatı ve kullanıcı prompt'unu birleştirerek gönderme
-    // Gemini API'sinde system_instruction ve user_prompt ayrı gönderilebilir.
-    // Ancak GoogleGenerativeAI kütüphanesinde generateContent tek bir prompt veya
-    // mesaj geçmişi array'i alır. Mesaj geçmişi array'i kullanmak daha doğru bir yaklaşım olabilir:
-    // const chat = model.startChat({
-    //   history: [
-    //     { role: "user", parts: [{ text: systemInstruction }] }, // Bu sistem talimatı olarak varsayılabilir
-    //     { role: "model", parts: [{ text: "Anlaşıldı. Nasıl yardımcı olabilirim?" }] } // Opsiyonel başlangıç
-    //   ],
-    //   generationConfig: { /* ... */ }
-    // });
-    // const result = await chat.sendMessage(userPrompt);
-
-    // Şimdilik tek bir prompt olarak birleştirelim:
-    const fullPrompt = `${systemInstruction}\n\n--- KULLANICININ GÜNCEL TALEBİ ---\nKullanıcı diyor ki: "${userPrompt}"\n\nLütfen yukarıdaki sistem talimatlarına ve kullanıcının öğrenme tercihlerine göre bu talebi yanıtla.`;
+    // --- SOHBET GEÇMİŞİ YAPISI ---
+    // Sohbet geçmişini oluştur, yalnızca son N mesajı al (token limitini aşmamak için)
+    // Gemini'nin `startChat` metodu mesaj geçmişi ile başlar.
+    // Sistem talimatını geçmişin ilk mesajı olarak ekleyelim.
+    const history = [
+      { role: 'user', parts: [{ text: systemInstructionText }] },
+      { role: 'model', parts: [{ text: 'Anlaşıldı. ${preferences.topic} konusunda size nasıl yardımcı olabilirim?' }] } // Başlangıç mesajı
+    ];
     
-    // console.log("Gönderilen Full Prompt:", fullPrompt); // Debug için
-    const result = await model.generateContent(fullPrompt); // Veya model.generateContentStream(fullPrompt)
+    // Önceki kullanıcı ve asistan mesajlarını history'ye ekle
+    // Son mesajlar daha önemli olduğu için tersten ekleyebiliriz veya token limitine dikkat ederek ekleyebiliriz.
+    // Burada basitçe mevcut tüm geçmişi ekleyelim, API token limitini aşarsa hata verecektir.
+    for (const msg of previousMessages) {
+        // Başlangıç mesajını tekrar eklememek için kontrol
+         if (!(msg.role === 'assistant' && msg.content.includes('Anlaşıldı.'))){
+             history.push({
+                 role: msg.role === 'user' ? 'user' : 'model',
+                 parts: [{ text: msg.content }]
+             });
+         }
+    }
+
+    // Gemini API ile konuşma başlat (startChat)
+    const chat = model.startChat({
+      history: history,
+      generationConfig: {
+        maxOutputTokens: 2048,
+        temperature: 0.7,
+      }
+    });
+
+    // Yeni kullanıcı mesajını gönder
+    const result = await chat.sendMessage(userPrompt);
+    
     const response = result.response;
     
     if (response.promptFeedback?.blockReason) {
