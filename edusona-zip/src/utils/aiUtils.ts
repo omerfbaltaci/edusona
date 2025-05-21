@@ -136,7 +136,7 @@ Tablo Oluşturma Kuralları (Eğer tablo kullanacaksan BU KURALLARA KESİNLİKLE
     // Sistem talimatını geçmişin ilk mesajı olarak ekleyelim.
     const history = [
       { role: 'user', parts: [{ text: systemInstructionText }] },
-      { role: 'model', parts: [{ text: 'Anlaşıldı. ${preferences.topic} konusunda size nasıl yardımcı olabilirim?' }] } // Başlangıç mesajı
+      { role: 'model', parts: [{ text: `Anlaşıldı. ${preferences.topic} konusunda size nasıl yardımcı olabilirim?` }] } // Başlangıç mesajı
     ];
     
     // Önceki kullanıcı ve asistan mesajlarını history'ye ekle
