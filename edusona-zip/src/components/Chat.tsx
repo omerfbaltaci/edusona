@@ -41,12 +41,14 @@ const Chat: React.FC<ChatProps> = ({ preferences }) => {
       timestamp: new Date(),
     };
     
-    setMessages((prev) => [...prev, userMessage]);
+    // Önce mevcut mesajları güncelleyelim
+    const updatedMessages = [...messages, userMessage];
+    setMessages(updatedMessages);
     setLoading(true);
 
     try {
-      // Simulate API call delay
-      const response = await generateResponse(content, preferences);
+      // Tüm önceki mesajları AI'ya gönderelim
+      const response = await generateResponse(content, preferences, updatedMessages);
       
       // Add AI response
       const aiMessage: Message = {
