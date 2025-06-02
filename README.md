@@ -1,6 +1,10 @@
 # EduSona – Yapay Zeka Destekli Eğitim Asistanı
 
-https://github.com/user-attachments/assets/f8b6fa7e-68cb-44dd-9c75-e23eed3042eb
+
+
+https://github.com/user-attachments/assets/6fc5fab8-a282-4c52-b421-f3ed0ec25571
+
+
 
 EduSona, öğrenme deneyimini kişiselleştiren, yapay zeka destekli bir eğitim asistanıdır. Kullanıcının tercihlerini ve öğrenme tarzını anlayarak, içerikleri bireysel ihtiyaçlara göre uyarlayan bu uygulama, öğrenmeyi daha etkili ve verimli hale getirir.
 
